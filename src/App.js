@@ -10,10 +10,10 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <HookIcecreamContainer />
-        <IcecreamContainer />
-        <HookCakeContainer />
         <CakeContainer />
+        <HookCakeContainer />
+        <IcecreamContainer />
+        <HookIcecreamContainer />
       </div>
     </Provider>
   );
