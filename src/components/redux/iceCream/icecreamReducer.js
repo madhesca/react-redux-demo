@@ -1,27 +1,7 @@
-// import { BUY_ICECREAM } from "./icecreamTypes";
-
-// const initialState = {
-//   numOfIcecream: 20
-// };
-
-// const icecreamReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case BUY_ICECREAM:
-//       return {
-//         ...state,
-//         numOfIcecream: state.numOfIcecream - 2
-//       };
-//     default:
-//       return state;
-//   }
-// };
-
-// export default icecreamReducer;
-
 import { BUY_ICECREAM } from "./icecreamTypes";
 
 const initialState = {
-  numOfIcecream: 20,
+  numOfIcecream: 20
 };
 
 const icecreamReducer = (state = initialState, action) => {
@@ -29,7 +9,7 @@ const icecreamReducer = (state = initialState, action) => {
     case BUY_ICECREAM:
       return {
         ...state,
-        numOfIcecream: state.numOfIcecream - 2,
+        numOfIcecream: state.numOfIcecream - action.payload
       };
 
     default:
