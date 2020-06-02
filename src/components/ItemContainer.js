@@ -1,28 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { buyCake } from "./redux/cake/cakeActions";
 import { buyIcecream } from "./redux/iceCream/icecreamActions";
 
-function ItemContainer(props) {
+function ItemContainer({ itemCount, less }) {
+  const [number, setNumber] = useState(1);
   return (
     <div>
-      <h3>Icecream or Cake - {props.itemCount}</h3>
-      <button onClick={props.itemDispatch}>Buy Item</button>
+      <span>
+        Icecream or Cake <h2>{itemCount}</h2>
+      </span>
+      <input
+        type="text"
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+      />
+      <button onClick={() => less(number)}>Less Me</button>
     </div>
   );
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const itemState = ownProps.cake ? state.cake.numOfCakes : state.icecream.numOfIcecream;
+  const ItemState = ownProps.cake
+    ? state.cake.numOfCakes
+    : state.icecream.numOfIcecream;
   return {
-    itemCount: itemState
+    itemCount: ItemState,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const itemAction = ownProps.cake ? () => dispatch(buyCake()) : () => dispatch(buyIcecream());
+  const itemLess = ownProps.cake
+    ? (number) => dispatch(buyCake(number))
+    : (number) => dispatch(buyIcecream(number));
   return {
-    itemDispatch: itemAction
+    less: itemLess,
   };
 };
 
