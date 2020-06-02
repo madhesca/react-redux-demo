@@ -34,30 +34,29 @@ import { REQUEST, SUCCESS, FAILURE } from "./userTypes";
 import axios from "axios";
 
 const userRequest = () => ({
-  type: REQUEST,
+  type: REQUEST
 });
 
-const userSuccess = (users) => ({
+const userSuccess = user => ({
   type: SUCCESS,
-  payload: users,
+  payload: user
 });
 
-const userFailure = (users) => ({
+const userFailure = user => ({
   type: FAILURE,
-  payload: users,
+  payload: user
 });
 
 export const fetchUsers = () => {
-  return (dispatch) => {
-    dispatch(userRequest);
+  return dispatch => {
     axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
+      .get("http://jsonplaceholder.typicode.com/users")
+      .then(response => {
         const users = response.data;
         dispatch(userSuccess(users));
       })
-      .catch((error) => {
-        userFailure(error);
+      .catch(error => {
+        dispatch(userFailure(error));
       });
   };
 };

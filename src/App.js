@@ -6,12 +6,13 @@ import IcecreamContainer from "./components/IcecreamContainer";
 import NewIcecreamContainer from "./components/NewIcecreamContainer";
 import ItemContainer from "./components/ItemContainer";
 import UserContainer from "./components/UserContainer";
+import CounterContainer from "./components/CounterContainer";
 
 function App() {
   return (
     <Provider store={store}>
       <div>
-        <UserContainer />
+        <CounterContainer />
       </div>
     </Provider>
   );

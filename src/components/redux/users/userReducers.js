@@ -40,23 +40,21 @@ import { REQUEST, SUCCESS, FAILURE } from "./userTypes";
 const initialState = {
   loading: false,
   users: [],
-  errors: "",
+  errors: ""
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducers = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST:
       return {
-        ...state,
-        loading: true,
+        loading: true
       };
-
     case SUCCESS:
       return {
         ...state,
         loading: false,
         users: action.payload,
-        errors: "",
+        errors: ""
       };
 
     case FAILURE:
@@ -64,7 +62,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         users: [],
-        errors: action.payload,
+        errors: action.payload
       };
 
     default:
@@ -72,4 +70,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default userReducers;
